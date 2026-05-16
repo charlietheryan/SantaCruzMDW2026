@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://otto.workato.com/shares/_1gqk78cgMk/santa-cruz-mdw/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santa Cruz MDW 2026 🌊</title>
+  <link rel="stylesheet" href="./Santa Cruz MDW 2026 _files/leaflet.css">
+  <script src="./Santa Cruz MDW 2026 _files/leaflet.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ocean: #1a5276; --ocean-light: #2471a3; --sand: #fdf6e3;
+      --coral: #e05c3a; --seafoam: #5dade2; --white: #fff;
+      --dark: #1c2833; --text: #2c3e50; --muted: #7f8c8d;
+      --border: #e8eaed; --bg: #f4f6f9;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: linear-gradient(145deg, #0b2f4e 0%, #1a5276 45%, #1a8fad 100%);
+      color: #fff; padding: 48px 20px 70px; text-align: center; position: relative; overflow: hidden;
+    }
+    .site-header::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 44px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 44'%3E%3Cpath fill='%23f4f6f9' d='M0,22 C180,44 360,0 540,22 C720,44 900,0 1080,22 C1260,44 1380,10 1440,22 L1440,44 L0,44Z'/%3E%3C/svg%3E") no-repeat bottom center / cover;
+    }
+    .header-icon { font-size: 3rem; display: block; margin-bottom: 8px; }
+    .site-header h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.5px; text-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+    .site-header .subtitle { font-size: 1.05rem; opacity: 0.82; margin-top: 8px; }
+    .header-chips { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .chip { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; font-weight: 600; }
+
+    /* ── TABS ── */
+    .tab-nav { background: #fff; border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+    .tab-nav-inner { max-width: 1120px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; }
+    .tab-nav-inner::-webkit-scrollbar { display: none; }
+    .tab-btn { padding: 16px 22px; border: none; background: none; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--muted); white-space: nowrap; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.18s; }
+    .tab-btn:hover { color: var(--ocean); }
+    .tab-btn.active { color: var(--ocean); border-bottom-color: var(--coral); }
+
+    /* ── LAYOUT ── */
+    .content { max-width: 1120px; margin: 0 auto; padding: 32px 20px 60px; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    .section-title { font-size: 1.5rem; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+    .section-sub { color: var(--muted); font-size: 0.92rem; margin-bottom: 28px; }
+
+    .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 1px 5px rgba(0,0,0,0.07); margin-bottom: 20px; }
+    .card h2 { font-size: 1.1rem; color: var(--dark); margin-bottom: 12px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    @media (max-width: 760px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .site-header h1 { font-size: 1.9rem; }
+    }
+
+    /* ── OVERVIEW ── */
+    .hero-card {
+      background: linear-gradient(135deg, #0b2f4e 0%, #1a5276 60%, #1a8fad 100%);
+      color: #fff; border-radius: 16px; padding: 30px; margin-bottom: 24px;
+    }
+    .hero-card h2 { color: #fff; font-size: 1.3rem; margin-bottom: 6px; }
+    .hero-card p { opacity: 0.88; font-size: 0.95rem; line-height: 1.6; }
+    .quick-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 20px; }
+    .qs { background: rgba(255,255,255,0.14); border-radius: 10px; padding: 14px; text-align: center; }
+    .qs-num { font-size: 1.6rem; font-weight: 800; display: block; }
+    .qs-label { font-size: 0.7rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .highlight { border-left: 4px solid var(--coral); background: #fff; border-radius: 0 12px 12px 0; padding: 16px 18px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .highlight h3 { font-size: 0.95rem; color: var(--dark); margin-bottom: 5px; }
+    .highlight p { font-size: 0.87rem; color: var(--muted); line-height: 1.55; }
+
+    .tip-list { list-style: none; }
+    .tip-list li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; line-height: 1.55; display: flex; gap: 10px; align-items: flex-start; }
+    .tip-list li:last-child { border-bottom: none; }
+    .tip-list li .tip-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .tip-list li .tip-text { flex: 1; min-width: 0; word-wrap: break-word; overflow-wrap: break-word; }
+
+    /* ── ITINERARY ── */
+    .day-card { background: #fff; border-radius: 14px; overflow: hidden; margin-bottom: 22px; box-shadow: 0 1px 5px rgba(0,0,0,0.07); }
+    .day-header { padding: 18px 24px; color: #fff; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+    .day-header .day-icon { font-size: 1.4rem; }
+    .day-header .day-title { font-size: 1.05rem; }
+    .day-header .day-sub { font-size: 0.78rem; opacity: 0.82; font-weight: 400; margin-top: 2px; }
+    .dh1 { background: linear-gradient(135deg, #0b2f4e, #1a5276); }
+    .dh2 { background: linear-gradient(135deg, #1a5276, #2471a3); }
+    .dh3 { background: linear-gradient(135deg, #b7410e, #e05c3a); }
+    .dh4 { background: linear-gradient(135deg, #0e6655, #1abc9c); }
+
+    .time-block { display: flex; gap: 16px; padding: 16px 24px; border-bottom: 1px solid #f4f4f4; align-items: flex-start; }
+    .time-block:last-child { border-bottom: none; }
+    .time-lbl { font-size: 0.7rem; font-weight: 700; color: var(--ocean); text-transform: uppercase; letter-spacing: 0.4px; min-width: 68px; padding-top: 2px; }
+    .time-content h4 { font-size: 0.93rem; color: var(--dark); margin-bottom: 4px; }
+    .time-content p { font-size: 0.84rem; color: var(--muted); line-height: 1.5; }
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 7px; }
+    .tag { font-size: 0.68rem; padding: 2px 9px; border-radius: 20px; font-weight: 700; }
+    .tw { background: #e8f5e9; color: #2e7d32; }
+    .td { background: #e3f2fd; color: #1565c0; }
+    .tf { background: #fff3e0; color: #e65100; }
+    .tk { background: #fce4ec; color: #c62828; }
+    .ta { background: #f3e5f5; color: #6a1b9a; }
+    .tb { background: #e0f7fa; color: #00695c; }
+
+    /* ── RECOMMENDATIONS ── */
+    .rec-section { margin-bottom: 36px; }
+    .rec-section-title { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .rec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+    .rec-card { background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border-top: 3px solid var(--coral); transition: transform 0.15s, box-shadow 0.15s; }
+    .rec-card:hover { transform: translateY(-2px); box-shadow: 0 5px 16px rgba(0,0,0,0.1); }
+    .rec-card h3 { font-size: 0.93rem; color: var(--dark); margin-bottom: 3px; }
+    .rec-meta { font-size: 0.77rem; color: var(--muted); margin-bottom: 6px; }
+    .rec-notes { font-size: 0.83rem; color: #555; line-height: 1.45; }
+    .kid-badge { display: inline-block; font-size: 0.68rem; padding: 2px 9px; border-radius: 10px; font-weight: 700; margin-top: 9px; }
+    .kh { background: #e8f5e9; color: #2e7d32; }
+    .kmh { background: #f1f8e9; color: #558b2f; }
+    .km { background: #fff8e1; color: #f57f17; }
+    .ka { background: #fce4ec; color: #880e4f; }
+
+    /* ── PLACES ── */
+    .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .filter-btn { padding: 7px 15px; border-radius: 20px; border: 2px solid var(--border); background: #fff; cursor: pointer; font-size: 0.78rem; font-weight: 600; color: var(--muted); transition: all 0.15s; }
+    .filter-btn:hover, .filter-btn.active { border-color: var(--ocean); background: var(--ocean); color: #fff; }
+    .places-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; }
+    .place-card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); transition: transform 0.15s; }
+    .place-card:hover { transform: translateY(-1px); }
+    .place-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 4px; }
+    .place-name { font-size: 0.9rem; font-weight: 700; color: var(--dark); flex: 1; }
+    .cat-pill { font-size: 0.65rem; color: #fff; padding: 2px 8px; border-radius: 10px; font-weight: 700; white-space: nowrap; }
+    .place-addr { font-size: 0.75rem; color: #aaa; margin-bottom: 6px; }
+    .place-notes { font-size: 0.82rem; color: #555; line-height: 1.44; }
+    .place-footer { margin-top: 10px; display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+    .dist-pill { font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; background: #eef2ff; color: #3730a3; font-weight: 600; }
+
+    /* ── MAP ── */
+    #map { height: 580px; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
+    .map-legend { background: #fff; border-radius: 12px; padding: 18px 20px; box-shadow: 0 1px 5px rgba(0,0,0,0.07); margin-bottom: 16px; }
+    .map-legend h3 { font-size: 0.88rem; color: var(--dark); margin-bottom: 12px; font-weight: 700; }
+    .legend-grid { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+    .legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.78rem; color: #555; cursor: pointer; user-select: none; }
+    .legend-dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
+    .legend-item.hidden .legend-dot { opacity: 0.25; }
+    .legend-item.hidden span { opacity: 0.4; }
+
+    /* ── VIDEO ── */
+    .video-embed { width: 100%; aspect-ratio: 16/9; border-radius: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.12); border: 0; display: block; margin-bottom: 28px; }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 0.82rem; }
+    .site-footer strong { color: rgba(255,255,255,0.8); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="header-icon">🌊</span>
+  <h1>Santa Cruz MDW 2026</h1>
+  <p class="subtitle">Memorial Day Weekend · May 23–26 · Pleasure Point</p>
+  <div class="header-chips">
+    <span class="chip">🏡 4720 Portola Drive</span>
+    <span class="chip">🏖️ 0.2 mi to beach</span>
+    <span class="chip">📍 70+ curated spots</span>
+    <span class="chip">👶 Toddler-friendly picks</span>
+  </div>
+</header>
+
+<nav class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" data-tab="overview">🏠 Overview</button>
+    <button class="tab-btn" data-tab="itinerary">📅 Itinerary</button>
+    <button class="tab-btn" data-tab="recommendations">⭐ Recommendations</button>
+    <button class="tab-btn" data-tab="places">📍 Places</button>
+    <button class="tab-btn" data-tab="map">🗺️ Map</button>
+  </div>
+</nav>
+
+<main class="content">
+
+  <!-- ═══════════════════════════════════════════════
+       OVERVIEW
+  ═══════════════════════════════════════════════ -->
+  <section class="tab-panel active" id="tab-overview">
+    <div class="hero-card">
+      <h2>🏡 Home Base — 4720 Portola Drive</h2>
+      <p>Santa Cruz, CA 95062 · Pleasure Point / Capitola Waterfront</p>
+      <div class="quick-stats">
+        <div class="qs"><span class="qs-num">0.2</span><span class="qs-label">miles to The Hook</span></div>
+        <div class="qs"><span class="qs-num">0.5</span><span class="qs-label">miles to El Rancho</span></div>
+        <div class="qs"><span class="qs-num">1.0</span><span class="qs-label">miles to Capitola Beach</span></div>
+        <div class="qs"><span class="qs-num">3.5</span><span class="qs-label">miles to Boardwalk</span></div>
+      </div>
+    </div>
+
+    <iframe class="video-embed" src="./Santa Cruz MDW 2026 _files/preview.html" allowfullscreen="" loading="lazy"></iframe>
+
+    <div class="grid-2">
+      <div>
+        <p class="section-title">Area Highlights</p>
+        <p class="section-sub">What's in each direction</p>
+        <div class="highlight">
+          <h3>🏄 Pleasure Point Corridor (walking distance)</h3>
+          <p>World-class surf break steps from the house. The 41st Ave hub has coffee, pizza, surf shops, craft beer, and a donut shop — all under 0.7 miles. The Hook County Park is 0.24 miles.</p>
+        </div>
+        <div class="highlight">
+          <h3>🌺 Capitola Village (~1 mile)</h3>
+          <p>Colorful beachfront village with Zelda's on the Beach, Pizza My Heart, boutique shops, and the iconic Capitola Beach. Best visited early before parking gets brutal on holiday weekends.</p>
+        </div>
+        <div class="highlight">
+          <h3>🎢 Santa Cruz Boardwalk (3.5 miles)</h3>
+          <p>Classic amusement park with the historic Looff Carousel (top toddler pick), Sky Glider, and Main Beach. Free to walk — rides are ticketed. Go before 11am to beat the holiday crowds.</p>
+        </div>
+        <div class="highlight">
+          <h3>🌲 Redwood Day Trips (8+ miles)</h3>
+          <p>Roaring Camp Railroad and Henry Cowell Redwoods are both standout toddler experiences — steam train through old-growth redwoods. Book Roaring Camp in advance.</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-title">Trip Logistics</p>
+        <p class="section-sub">Practical notes</p>
+
+        <div class="card">
+          <h2>🛒 Groceries &amp; Supplies</h2>
+          <ul class="tip-list">
+            <li><span class="tip-icon">🥬</span> <span class="tip-text"><strong>New Leaf Community Market</strong> (1.1 mi) — Best local option. Prepared foods, deli, wine and beer.</span></li>
+            <li><span class="tip-icon">🛍️</span> <span class="tip-text"><strong>Whole Foods + Trader Joe's + Target</strong> all within 1.3–1.4 mi on the 41st Ave corridor.</span></li>
+            <li><span class="tip-icon">⚡</span> <span class="tip-text"><strong>El Rancho Shopping Center</strong> (0.5 mi) is the fastest run for coffee, donuts, pizza, or last-minute items.</span></li>
+            <li><span class="tip-icon">🍖</span> <span class="tip-text"><strong>Pointside Meat Shop</strong> (0.68 mi) for craft beer, meat, and snacks — walkable.</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>🚗 Parking Tips</h2>
+          <ul class="tip-list">
+            <li><span class="tip-icon">⏰</span> <span class="tip-text">Capitola Beach and the Boardwalk fill fast on holiday weekends — arrive by 9–10am or walk in from a paid lot.</span></li>
+            <li><span class="tip-icon">🚶</span> <span class="tip-text">The Pleasure Point / 41st Ave strip is walkable from home, saving the car for longer drives.</span></li>
+            <li><span class="tip-icon">🌅</span> <span class="tip-text">Rio Del Mar (3.1 mi east) has easier parking than Santa Cruz beaches on busy weekends.</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>👶 Toddler Tips</h2>
+          <ul class="tip-list">
+            <li><span class="tip-icon">🏞️</span> <span class="tip-text"><strong>Moran Lake County Park</strong> is the standout — lagoon, beach access, restrooms, mellow energy.</span></li>
+            <li><span class="tip-icon">🎠</span> <span class="tip-text"><strong>Boardwalk Carousel</strong> (Looff Carousel) is the best toddler ride — go early before it gets crowded.</span></li>
+            <li><span class="tip-icon">🚂</span> <span class="tip-text"><strong>Roaring Camp Railroad</strong> is a must if doing a day trip — train through redwoods is a genuine experience.</span></li>
+            <li><span class="tip-icon">🚶</span> <span class="tip-text"><strong>East Cliff Drive Pathway</strong> is fully stroller-friendly with ocean views the whole way.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       ITINERARY
+  ═══════════════════════════════════════════════ -->
+  <section class="tab-panel" id="tab-itinerary">
+    <p class="section-title">📅 Weekend Itinerary</p>
+    <p class="section-sub">Day-by-day plan based on proximity, kid-friendly timing, and local context</p>
+
+    <!-- Day 1 -->
+    <div class="day-card">
+      <div class="day-header dh1">
+        <span class="day-icon">🚗</span>
+        <div>
+          <div class="day-title">Friday, May 23 — Arrival Day</div>
+          <div class="day-sub">Settle in · Local walks · Easy dinner</div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Afternoon</span>
+        <div class="time-content">
+          <h4>Arrive &amp; settle in at 4720 Portola Drive</h4>
+          <p>Get unpacked, open the windows to that ocean air, get oriented to the neighborhood.</p>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Late PM</span>
+        <div class="time-content">
+          <h4>Supply run — El Rancho Shopping Center or 41st Ave</h4>
+          <p>Grab drinks, snacks, and essentials. Dunlap Donuts (0.45 mi) and Pleasure Point Liquor (0.42 mi) are both a short walk away for the obvious first priorities.</p>
+          <div class="tags"><span class="tag tw">0.5 mi walk</span><span class="tag tk">👶 Kid-friendly</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Sunset</span>
+        <div class="time-content">
+          <h4>First beach walk — The Hook County Park &amp; Pleasure Point</h4>
+          <p>0.24 miles from the door. Best surf watching spot in the neighborhood, picnic area, ocean photos. A soft introduction to the trip.</p>
+          <div class="tags"><span class="tag tw">0.25 mi walk</span><span class="tag tb">🌊 Beach</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Dinner</span>
+        <div class="time-content">
+          <h4>Pleasure Pizza East Side Eatery or The Point Kitchen &amp; Bar</h4>
+          <p>Both under 1 mile. Pleasure Pizza is the easy family call; The Point is a step up for a more relaxed first-night dinner — coastal casual, medium-high kid-friendliness.</p>
+          <div class="tags"><span class="tag tw">Walkable</span><span class="tag tf">🍕 Food</span><span class="tag tk">👶 Kid-friendly</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card">
+      <div class="day-header dh2">
+        <span class="day-icon">🏖️</span>
+        <div>
+          <div class="day-title">Saturday, May 24 — Beach Day</div>
+          <div class="day-sub">Capitola · Water time · Happy hour</div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Morning</span>
+        <div class="time-content">
+          <h4>Coffee at Verve Coffee Roasters or Cat &amp; Cloud</h4>
+          <p>Both under 0.7 miles. Verve is a local institution; Cat &amp; Cloud is on Portola and easy with a stroller. Dunlap Donuts for a quicker first-morning option.</p>
+          <div class="tags"><span class="tag tw">Walkable</span><span class="tag tk">👶 Kid-friendly</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Mid-Morning</span>
+        <div class="time-content">
+          <h4>Capitola Beach — arrive by 9am before parking gets brutal</h4>
+          <p>1 mile from home. Wide sand, restaurants steps away, shops in the village. The most social beach of the trip. Toddler paradise.</p>
+          <div class="tags"><span class="tag td">Short drive / bike</span><span class="tag tb">🌊 Beach</span><span class="tag tk">👶 Kid-friendly</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Lunch</span>
+        <div class="time-content">
+          <h4>Zelda's on the Beach or Pizza My Heart Capitola</h4>
+          <p>Both on the Capitola Esplanade. Zelda's for the full beachfront sit-down experience; Pizza My Heart if the toddler needs calories fast.</p>
+          <div class="tags"><span class="tag tf">🍽️ Lunch</span><span class="tag tb">🌊 Waterfront</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Afternoon</span>
+        <div class="time-content">
+          <h4>Moran Lake County Park — toddler afternoon wind-down</h4>
+          <p>1.35 miles from home. Lagoon, beach access, restrooms. Best toddler spot of the trip for a mellow afternoon hang after the busy beach morning.</p>
+          <div class="tags"><span class="tag td">Short drive</span><span class="tag tk">👶 Best for toddlers</span><span class="tag tb">🌊 Beach</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">4–6 PM</span>
+        <div class="time-content">
+          <h4>Happy Hour at Hula's Island Grill</h4>
+          <p>3.8 miles downtown. Happy hour runs 4–6pm — massive tiki drinks, casual energy. Worth the drive for adults once the toddler's been well-fed.</p>
+          <div class="tags"><span class="tag td">Short drive</span><span class="tag ta">🍹 Adults</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Dinner</span>
+        <div class="time-content">
+          <h4>Shadowbrook or Zameen at the Point</h4>
+          <p>Shadowbrook is iconic Capitola — 1.2 miles, outside the toddler meltdown window it's great. Zameen (0.71 mi) is a quick walkable backup for fast bowls and wraps.</p>
+          <div class="tags"><span class="tag tf">🍽️ Dinner</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card">
+      <div class="day-header dh3">
+        <span class="day-icon">🎢</span>
+        <div>
+          <div class="day-title">Sunday, May 25 — Explore Day</div>
+          <div class="day-sub">Boardwalk · West Cliff · Downtown</div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Morning</span>
+        <div class="time-content">
+          <h4>Gayle's Bakery — pastries + coffee in Capitola</h4>
+          <p>1.1 miles. Best pastries in the area. Grab sandwiches or picnic supplies here if doing a beach or park day. High kid-friendliness.</p>
+          <div class="tags"><span class="tag td">Short drive / bike</span><span class="tag tf">☕ Breakfast</span><span class="tag tk">👶 Kid-friendly</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Mid-Morning</span>
+        <div class="time-content">
+          <h4>Santa Cruz Beach Boardwalk — arrive before 11am</h4>
+          <p>3.5 miles. Toddler move: hit the Looff Carousel first. Adults: grab a Sky Glider ride for the views. Free to walk; rides are pay-per-ride or wristband.</p>
+          <div class="tags"><span class="tag td">Short drive</span><span class="tag tk">👶 Go early</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Lunch</span>
+        <div class="time-content">
+          <h4>Santa Cruz Wharf</h4>
+          <p>3.7 miles. Stroller-friendly walk out over the water, harbor seals below, clam chowder and snacks. A classic Santa Cruz midday stop.</p>
+          <div class="tags"><span class="tag tb">🌊 Waterfront</span><span class="tag tf">🦞 Seafood</span><span class="tag tk">👶 Kid-friendly</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Afternoon</span>
+        <div class="time-content">
+          <h4>West Cliff Drive → Natural Bridges State Beach</h4>
+          <p>5.5 miles from home. Shrine Coffee (3.8 mi) is a perfect stop along West Cliff before hitting Natural Bridges — tide pools, arch rock, best sunset beach of the trip.</p>
+          <div class="tags"><span class="tag td">Short drive</span><span class="tag tb">🌊 Beach</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Evening</span>
+        <div class="time-content">
+          <h4>Downtown Santa Cruz — Pacific Ave &amp; Abbott Square</h4>
+          <p>Restaurants, shops, bars on Pacific Ave. Abbott Square Market is a good adult food hall option. La Posta (3.1 mi) for a nice dinner, or Hula's for round two.</p>
+          <div class="tags"><span class="tag td">Short drive</span><span class="tag tf">🍽️ Dinner</span><span class="tag ta">🍷 Nightlife</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="day-card">
+      <div class="day-header dh4">
+        <span class="day-icon">🌲</span>
+        <div>
+          <div class="day-title">Monday, May 26 — Memorial Day</div>
+          <div class="day-sub">Redwoods or beach · Pack up · Head home</div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Morning</span>
+        <div class="time-content">
+          <h4>Option A (Recommended): Roaring Camp Railroad + Henry Cowell Redwoods</h4>
+          <p>8 miles north — 15 min drive. Steam train through old-growth redwoods. Best toddler memory of the trip. Book tickets in advance. Henry Cowell redwood grove trails are right next door.</p>
+          <div class="tags"><span class="tag td">15 min drive</span><span class="tag tk">👶 Toddler highlight</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Morning</span>
+        <div class="time-content">
+          <h4>Option B: Rio Del Mar Beach (Aptos)</h4>
+          <p>3.1 miles east. Wider and less crowded than Main Beach. Great for one last sand session with easier holiday parking than central Santa Cruz beaches.</p>
+          <div class="tags"><span class="tag td">Short drive</span><span class="tag tb">🌊 Beach</span><span class="tag tk">👶 Family-friendly</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Midday</span>
+        <div class="time-content">
+          <h4>Last lunch near home — Miches and Ceviches or East End Gastropub</h4>
+          <p>Both under 1.1 miles. Miches is the seafood call for adults; East End is solid food and drinks near 41st for the whole group.</p>
+          <div class="tags"><span class="tag tf">🍽️ Lunch</span><span class="tag tw">Near home</span></div>
+        </div>
+      </div>
+      <div class="time-block">
+        <span class="time-lbl">Afternoon</span>
+        <div class="time-content">
+          <h4>Pack up &amp; head home — beat the holiday traffic</h4>
+          <p>Aim to leave by 2pm. Final coffee stop: Cliff Cafe (0.66 mi) or Cat &amp; Cloud for the road.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       RECOMMENDATIONS
+  ═══════════════════════════════════════════════ -->
+  <section class="tab-panel" id="tab-recommendations">
+    <p class="section-title">⭐ Top Picks</p>
+    <p class="section-sub">Best of each category — proximity, kid-friendliness, and local reputation</p>
+
+    <div class="rec-section">
+      <div class="rec-section-title">☕ Coffee &amp; Breakfast</div>
+      <div class="rec-grid">
+        <div class="rec-card"><h3>Verve Coffee Roasters</h3><div class="rec-meta">816 41st Ave · 0.69 mi</div><div class="rec-notes">Local institution. Pre-beach fuel, serious espresso. Stroller-friendly when not packed.</div><span class="kid-badge kh">👶 Kid-friendly</span></div>
+        <div class="rec-card"><h3>Cat &amp; Cloud</h3><div class="rec-meta">3600 Portola Dr · 0.58 mi</div><div class="rec-notes">Easy morning stroller walk. Great breakfast vibes, cozy spot right on Portola.</div><span class="kid-badge kh">👶 Kid-friendly</span></div>
+        <div class="rec-card"><h3>Dunlap Donuts</h3><div class="rec-meta">3800 Portola Dr · 0.45 mi</div><div class="rec-notes">Closest breakfast option from the house. Easy toddler win — donuts solve everything.</div><span class="kid-badge kh">👶 Kid-friendly</span></div>
+        <div class="rec-card"><h3>Gayle's Bakery</h3><div class="rec-meta">504 Bay Ave, Capitola · 1.1 mi</div><div class="rec-notes">Best pastries and bread near home. Doubles as a picnic supply stop — sandwiches, deli, the works.</div><span class="kid-badge kh">👶 Kid-friendly</span></div>
+      </div>
+    </div>
+
+    <div class="rec-section">
+      <div class="rec-section-title">🍽️ Restaurants &amp; Bars</div>
+      <div class="rec-grid">
+        <div class="rec-card"><h3>Zelda's on the Beach</h3><div class="rec-meta">203 Esplanade, Capitola · 1.0 mi</div><div class="rec-notes">Classic Capitola beachfront restaurant. The most "Santa Cruz vacation" meal on the list.</div><span class="kid-badge kmh">✅ Family-friendly</span></div>
+        <div class="rec-card"><h3>Hula's Island Grill</h3><div class="rec-meta">221 Cathcart St · 3.8 mi</div><div class="rec-notes">Massive tiki drinks. Happy hour 4–6pm is the move. Casual energy, great for adults.</div><span class="kid-badge ka">🍹 Happy Hour 4–6pm</span></div>
+        <div class="rec-card"><h3>Shadowbrook</h3><div class="rec-meta">1750 Wharf Rd, Capitola · 1.2 mi</div><div class="rec-notes">Iconic Capitola dinner — best experienced outside the toddler meltdown window. Worth the effort.</div><span class="kid-badge km">⚠️ Timing matters</span></div>
+        <div class="rec-card"><h3>The Point Kitchen &amp; Bar</h3><div class="rec-meta">3326 Portola Dr · 0.9 mi</div><div class="rec-notes">Coastal-casual brunch/dinner, walkable from home. Good medium step-up from pizza nights.</div><span class="kid-badge kmh">✅ Family-friendly</span></div>
+      </div>
+    </div>
+
+    <div class="rec-section">
+      <div class="rec-section-title">🏖️ Beaches &amp; Parks</div>
+      <div class="rec-grid">
+        <div class="rec-card"><h3>Capitola Beach</h3><div class="rec-meta">Capitola Esplanade · 1.0 mi</div><div class="rec-notes">Beach + shops + restaurants in one spot. Most social beach of the trip. Arrive early.</div><span class="kid-badge kh">👶 Kid-friendly</span></div>
+        <div class="rec-card"><h3>Moran Lake County Park</h3><div class="rec-meta">E Cliff Dr · 1.35 mi</div><div class="rec-notes">Top toddler spot. Lagoon, beach access, restrooms. Mellow energy — great long afternoon hang.</div><span class="kid-badge kh">👶 Best for toddlers</span></div>
+        <div class="rec-card"><h3>The Hook County Park</h3><div class="rec-meta">511 41st Ave · 0.24 mi</div><div class="rec-notes">Closest to home. World-class surf viewing, picnic area, sunset photos. Watch kids near the stairs.</div><span class="kid-badge km">⚠️ Supervision needed</span></div>
+        <div class="rec-card"><h3>Natural Bridges State Beach</h3><div class="rec-meta">W Cliff Dr · 5.5 mi</div><div class="rec-notes">Best scenic beach of the trip. Tide pools, arch rock, spectacular sunset. Worth the drive.</div><span class="kid-badge kmh">✅ Family-friendly</span></div>
+      </div>
+    </div>
+
+    <div class="rec-section">
+      <div class="rec-section-title">🎡 Attractions</div>
+      <div class="rec-grid">
+        <div class="rec-card"><h3>Santa Cruz Beach Boardwalk</h3><div class="rec-meta">400 Beach St · 3.5 mi</div><div class="rec-notes">Non-negotiable. Free to walk. Looff Carousel for toddlers, Sky Glider for views. Go before 11am.</div><span class="kid-badge kh">👶 Go early</span></div>
+        <div class="rec-card"><h3>Roaring Camp Railroad</h3><div class="rec-meta">Felton · 8.1 mi</div><div class="rec-notes">Steam train through redwoods. Best toddler experience of the weekend. Book ahead.</div><span class="kid-badge kh">👶 Toddler highlight</span></div>
+        <div class="rec-card"><h3>Santa Cruz Wharf</h3><div class="rec-meta">21 Municipal Wharf · 3.7 mi</div><div class="rec-notes">Stroller-friendly walk over the water. Sea lions, harbor views, clam chowder. Great midday stop.</div><span class="kid-badge kmh">✅ Family-friendly</span></div>
+        <div class="rec-card"><h3>Monterey Bay Aquarium</h3><div class="rec-meta">Monterey · 24 mi</div><div class="rec-notes">Major day-trip if weather turns or you want an indoor option. Worth every minute.</div><span class="kid-badge kh">👶 Rain day option</span></div>
+      </div>
+    </div>
+
+    <div class="rec-section">
+      <div class="rec-section-title">🛒 Groceries &amp; Essentials</div>
+      <div class="rec-grid">
+        <div class="rec-card"><h3>New Leaf Community Market</h3><div class="rec-meta">1475 41st Ave · 1.1 mi</div><div class="rec-notes">Best local grocery. Prepared foods, deli, wine and beer. Use this as your main supply base.</div><span class="kid-badge kh">✅ Easy</span></div>
+        <div class="rec-card"><h3>El Rancho Shopping Center</h3><div class="rec-meta">38th Ave &amp; Portola Dr · 0.5 mi</div><div class="rec-notes">Fastest errand stop. Coffee, donuts, pizza, and quick needs all in one walkable spot.</div><span class="kid-badge kh">✅ Walkable</span></div>
+        <div class="rec-card"><h3>Trader Joe's</h3><div class="rec-meta">3555 Clares St · 1.3 mi</div><div class="rec-notes">Snacks, fruit, frozen meals, wine. Do a stock-up run on arrival afternoon.</div><span class="kid-badge kh">✅ Easy</span></div>
+        <div class="rec-card"><h3>Target</h3><div class="rec-meta">1825 41st Ave · 1.4 mi</div><div class="rec-notes">Diapers, wipes, pharmacy needs, household basics. The emergency backup for toddler logistics.</div><span class="kid-badge kh">✅ Easy</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       PLACES
+  ═══════════════════════════════════════════════ -->
+  <section class="tab-panel" id="tab-places">
+    <p class="section-title">📍 All Places of Interest</p>
+    <p class="section-sub"><span id="place-count">74</span> locations — filter by category</p>
+
+    <div class="filter-bar" id="place-filters">
+      <button class="filter-btn active" data-cat="all">All</button>
+      <button class="filter-btn" data-cat="Coffee &amp; Bakeries">☕ Coffee</button>
+      <button class="filter-btn" data-cat="Restaurants &amp; Bars">🍽️ Restaurants</button>
+      <button class="filter-btn" data-cat="Beaches &amp; Parks">🏖️ Beaches</button>
+      <button class="filter-btn" data-cat="Attractions">🎡 Attractions</button>
+      <button class="filter-btn" data-cat="Events &amp; Nightlife">🎵 Nightlife</button>
+      <button class="filter-btn" data-cat="Groceries &amp; Essentials">🛒 Groceries</button>
+      <button class="filter-btn" data-cat="Shops &amp; Areas">🛍️ Shops</button>
+      <button class="filter-btn" data-cat="Sports &amp; Recreation">🏄 Sports</button>
+      <button class="filter-btn" data-cat="Liquor Stores">🍷 Liquor</button>
+      <button class="filter-btn" data-cat="Dispensaries">🌿 Dispensaries</button>
+    </div>
+
+    <div class="places-grid" id="places-grid">
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">4720 Portola Drive</div>
+        <span class="cat-pill" style="background:#e74c3c">🏡 Home Base</span>
+      </div>
+      <div class="place-addr">4720 Portola Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Primary stay location near Pleasure Point / Capitola waterfront</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Home</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Verve Coffee Roasters</div>
+        <span class="cat-pill" style="background:#8B4513">☕ Coffee &amp; Bakeries</span>
+      </div>
+      <div class="place-addr">816 41st Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Coffee, pre-beach fuel, stroller-friendly if not packed</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.69 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Cat &amp; Cloud</div>
+        <span class="cat-pill" style="background:#8B4513">☕ Coffee &amp; Bakeries</span>
+      </div>
+      <div class="place-addr">3600 Portola Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Coffee and breakfast walk with stroller</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.58 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Coffeetopia at El Rancho</div>
+        <span class="cat-pill" style="background:#8B4513">☕ Coffee &amp; Bakeries</span>
+      </div>
+      <div class="place-addr">1443 Capitola Rd, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Easy parking and nearby errands</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 2.25 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Cliff Cafe</div>
+        <span class="cat-pill" style="background:#8B4513">☕ Coffee &amp; Bakeries</span>
+      </div>
+      <div class="place-addr">815 41st Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Neighborhood breakfast, best early</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.66 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Companion Bakeshop</div>
+        <span class="cat-pill" style="background:#8B4513">☕ Coffee &amp; Bakeries</span>
+      </div>
+      <div class="place-addr">2341 Mission St, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Pastries and bread, drive from Portola</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 4.8 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Shrine Coffee</div>
+        <span class="cat-pill" style="background:#8B4513">☕ Coffee &amp; Bakeries</span>
+      </div>
+      <div class="place-addr">544 West Cliff Dr, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Coffee paired with West Cliff ocean walk</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.8 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Gayle's Bakery</div>
+        <span class="cat-pill" style="background:#8B4513">☕ Coffee &amp; Bakeries</span>
+      </div>
+      <div class="place-addr">504 Bay Ave, Capitola, CA 95010</div>
+      <div class="place-notes">Quick lunch, pastries, sandwiches, picnic supplies</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.12 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Dunlap Donuts</div>
+        <span class="cat-pill" style="background:#8B4513">☕ Coffee &amp; Bakeries</span>
+      </div>
+      <div class="place-addr">3800 Portola Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Easy toddler breakfast treat near El Rancho area</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.45 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Pleasure Pizza East Side Eatery</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">800 41st Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Reliable toddler-friendly takeout</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.63 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Zameen at the Point</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">851 41st Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Fast bowls and wraps</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.71 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge kmh">Medium-High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Miches and Ceviches</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">743 41st Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Adult-friendly seafood option</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.59 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">The Point Kitchen &amp; Bar</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">3326 Portola Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Coastal-casual brunch/dinner</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.9 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge kmh">Medium-High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Hula's Island Grill</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">221 Cathcart St, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Massive tiki drinks, happy hour 4–6pm, casual adult energy</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.79 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kmh">Medium-High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Little Tampico</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">2605 S Main St, Soquel, CA 95073</div>
+      <div class="place-notes">Mexican food and big margaritas</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.92 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Zelda's on the Beach</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">203 Esplanade, Capitola, CA 95010</div>
+      <div class="place-notes">Classic Capitola beachfront meal</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.02 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kmh">Medium-High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Shadowbrook</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">1750 Wharf Rd, Capitola, CA 95010</div>
+      <div class="place-notes">Iconic Capitola dinner, better outside toddler meltdown window</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.19 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Pizza My Heart Capitola</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">209 Esplanade, Capitola, CA 95010</div>
+      <div class="place-notes">Casual pizza near Capitola Beach</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">East End Gastropub</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">1501 41st Ave, Capitola, CA 95010</div>
+      <div class="place-notes">Adult-friendly food and drinks near 41st</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.14 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">La Posta</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">538 Seabright Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Adult-leaning dinner option</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.14 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Mentone</div>
+        <span class="cat-pill" style="background:#e67e22">🍽️ Restaurants &amp; Bars</span>
+      </div>
+      <div class="place-addr">174 Aptos Village Way, Aptos, CA 95003</div>
+      <div class="place-notes">Adult-leaning restaurant in Aptos</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.2 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">41st Ave + Portola Hub</div>
+        <span class="cat-pill" style="background:#e91e63">🛍️ Shops &amp; Areas</span>
+      </div>
+      <div class="place-addr">41st Ave &amp; Portola Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Closest commercial zone for coffee, casual food, surf shops, errands</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.66 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Pleasure Point County Park</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">E Cliff Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Surf watching, ocean views, photos; better for watching than swimming</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.44 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge kmh">Medium-High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">The Hook County Park</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">511 41st Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Surf viewing, picnic area, vista point, stairs and rocks near water</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.24 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Moran Lake County Park</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">22775 E Cliff Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Toddler-friendly park, lagoon, beach access, restrooms nearby</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.35 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Moran Lake Beach</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">E Cliff Dr near Moran Lake, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Small pocket beach for local sand play</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.41 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">East Cliff Drive Pathway</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">East Cliff Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Stroller-friendly ocean walk and surf watching</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.75 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Twin Lakes State Beach</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">East Cliff Dr at 7th Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Wide sand, picnics, swimming, near harbor</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 2.39 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Seabright Beach</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">Seabright Ave &amp; E Cliff Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Wide sand and harbor views</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 2.92 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Capitola Beach</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">Capitola Esplanade, Capitola, CA 95010</div>
+      <div class="place-notes">Beach, restaurants, shops, ice cream; parking tough after morning</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.97 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Rio Del Mar Beach</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">Beach Dr, Aptos, CA 95003</div>
+      <div class="place-notes">Great wide sandy family beach</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.1 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Natural Bridges State Beach</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">2531 W Cliff Dr, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Sunset, tide pools, scenery</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 5.47 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kmh">Medium-High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Main Beach</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">Beach St, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Classic Santa Cruz beach near Boardwalk</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.56 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kmh">Medium-High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Lighthouse Field State Beach</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">West Cliff Dr, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Scenic West Cliff stop and surf watching</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.78 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Wilder Ranch State Park</div>
+        <span class="cat-pill" style="background:#2980b9">🏖️ Beaches &amp; Parks</span>
+      </div>
+      <div class="place-addr">1401 Coast Rd, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Day-trip park and coastal trails</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 6.95 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Santa Cruz Beach Boardwalk</div>
+        <span class="cat-pill" style="background:#8e44ad">🎡 Attractions</span>
+      </div>
+      <div class="place-addr">400 Beach St, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Classic rides, arcade, Main Beach; best before 11am</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.5 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Sky Glider</div>
+        <span class="cat-pill" style="background:#8e44ad">🎡 Attractions</span>
+      </div>
+      <div class="place-addr">400 Beach St, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Scenic overhead Boardwalk ride</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.49 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Haunted Castle</div>
+        <span class="cat-pill" style="background:#8e44ad">🎡 Attractions</span>
+      </div>
+      <div class="place-addr">400 Beach St, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Interactive dark ride; likely too dark/loud for toddlers</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.51 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Adults / older kids</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Carousel / Looff Carousel</div>
+        <span class="cat-pill" style="background:#8e44ad">🎡 Attractions</span>
+      </div>
+      <div class="place-addr">400 Beach St, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Most toddler-friendly Boardwalk ride</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.53 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Santa Cruz Wharf</div>
+        <span class="cat-pill" style="background:#8e44ad">🎡 Attractions</span>
+      </div>
+      <div class="place-addr">21 Municipal Wharf, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Stroller walk, views, snacks</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.66 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kmh">Medium-High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Downtown Santa Cruz / Pacific Ave</div>
+        <span class="cat-pill" style="background:#8e44ad">🎡 Attractions</span>
+      </div>
+      <div class="place-addr">Pacific Ave, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Restaurants, shops, nightlife</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.84 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Abbott Square Market</div>
+        <span class="cat-pill" style="background:#8e44ad">🎡 Attractions</span>
+      </div>
+      <div class="place-addr">725 Front St, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Adult-friendly food hall and downtown stop</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.83 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Boardwalk Bowl</div>
+        <span class="cat-pill" style="background:#8e44ad">🎡 Attractions</span>
+      </div>
+      <div class="place-addr">115 Cliff St, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Bowling, arcade, restaurant and bar near Boardwalk</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.61 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kmh">Medium-High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Roaring Camp Railroad</div>
+        <span class="cat-pill" style="background:#8e44ad">🎡 Attractions</span>
+      </div>
+      <div class="place-addr">5401 Graham Hill Rd, Felton, CA 95018</div>
+      <div class="place-notes">Redwood train ride, strong toddler option</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 8.15 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Day trip</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Henry Cowell Redwoods</div>
+        <span class="cat-pill" style="background:#8e44ad">🎡 Attractions</span>
+      </div>
+      <div class="place-addr">101 N Big Trees Park Rd, Felton, CA 95018</div>
+      <div class="place-notes">Redwood grove and easy nature walk</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 8.08 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Day trip</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Monterey Bay Aquarium</div>
+        <span class="cat-pill" style="background:#8e44ad">🎡 Attractions</span>
+      </div>
+      <div class="place-addr">886 Cannery Row, Monterey, CA 93940</div>
+      <div class="place-notes">Bigger day trip if weather turns or adults want a major outing</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 23.74 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Day trip</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Rio Theatre</div>
+        <span class="cat-pill" style="background:#c0392b">🎵 Events &amp; Nightlife</span>
+      </div>
+      <div class="place-addr">1205 Soquel Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Adult split-shift concert/show option</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.18 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge ka">Adults only</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">The Catalyst</div>
+        <span class="cat-pill" style="background:#c0392b">🎵 Events &amp; Nightlife</span>
+      </div>
+      <div class="place-addr">1011 Pacific Ave, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Adult nightlife/concert option</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.79 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge ka">Adults only</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Moe's Alley</div>
+        <span class="cat-pill" style="background:#c0392b">🎵 Events &amp; Nightlife</span>
+      </div>
+      <div class="place-addr">1535 Commercial Way, Santa Cruz, CA 95065</div>
+      <div class="place-notes">Adult live-music option</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 2.57 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge ka">Adults only</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Bargetto Winery</div>
+        <span class="cat-pill" style="background:#c0392b">🎵 Events &amp; Nightlife</span>
+      </div>
+      <div class="place-addr">3535 N Main St, Soquel, CA 95073</div>
+      <div class="place-notes">Sit-down adult option with wine and occasional music</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 2.04 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge ka">Adults only</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">New Leaf Community Market</div>
+        <span class="cat-pill" style="background:#27ae60">🛒 Groceries &amp; Essentials</span>
+      </div>
+      <div class="place-addr">1475 41st Ave, Capitola, CA 95010</div>
+      <div class="place-notes">Prepared foods, deli, bakery, wine and beer</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.13 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Whole Foods Market</div>
+        <span class="cat-pill" style="background:#27ae60">🛒 Groceries &amp; Essentials</span>
+      </div>
+      <div class="place-addr">1710 41st Ave, Capitola, CA 95010</div>
+      <div class="place-notes">Organic groceries, toddler snacks, prepared foods</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.29 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Trader Joe's</div>
+        <span class="cat-pill" style="background:#27ae60">🛒 Groceries &amp; Essentials</span>
+      </div>
+      <div class="place-addr">3555 Clares St D, Capitola, CA 95010</div>
+      <div class="place-notes">Snacks, fruit, frozen meals, wine</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.3 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Safeway</div>
+        <span class="cat-pill" style="background:#27ae60">🛒 Groceries &amp; Essentials</span>
+      </div>
+      <div class="place-addr">2720 41st Ave, Soquel, CA 95073</div>
+      <div class="place-notes">Groceries and practical supplies</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.65 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Target</div>
+        <span class="cat-pill" style="background:#27ae60">🛒 Groceries &amp; Essentials</span>
+      </div>
+      <div class="place-addr">1825 41st Ave, Capitola, CA 95010</div>
+      <div class="place-notes">Diapers, wipes, pharmacy-type needs, household basics</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.43 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Pointside Meat Shop</div>
+        <span class="cat-pill" style="background:#27ae60">🛒 Groceries &amp; Essentials</span>
+      </div>
+      <div class="place-addr">915 41st Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Meat, snacks, craft beer, wine</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.68 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">El Rancho Shopping Center</div>
+        <span class="cat-pill" style="background:#27ae60">🛒 Groceries &amp; Essentials</span>
+      </div>
+      <div class="place-addr">38th Ave &amp; Portola Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Coffee, donuts, pizza, errands, easy parking</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.51 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge kh">High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Pleasure Point Liquor &amp; Grocery</div>
+        <span class="cat-pill" style="background:#f39c12">🍷 Liquor Stores</span>
+      </div>
+      <div class="place-addr">4000 Portola Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Closest drinks, ice, snacks and convenience supplies</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.42 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Pleasure Point Wine &amp; Spirits</div>
+        <span class="cat-pill" style="background:#f39c12">🍷 Liquor Stores</span>
+      </div>
+      <div class="place-addr">3750 Portola Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Wine, beer, liquor stop along Portola</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.54 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">41st Ave Liquors</div>
+        <span class="cat-pill" style="background:#f39c12">🍷 Liquor Stores</span>
+      </div>
+      <div class="place-addr">41st Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Convenient if already on 41st</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.69 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">PR Farms</div>
+        <span class="cat-pill" style="background:#16a085">🌿 Dispensaries</span>
+      </div>
+      <div class="place-addr">1051 41st Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Adults-only walkable errand</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.7 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge ka">Adults only</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">The Hook Outlet</div>
+        <span class="cat-pill" style="background:#16a085">🌿 Dispensaries</span>
+      </div>
+      <div class="place-addr">Capitola area, Capitola, CA 95010</div>
+      <div class="place-notes">Adults-only short drive; confirm hours and ordering requirements</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.08 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge ka">Adults only</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">KindPeoples</div>
+        <span class="cat-pill" style="background:#16a085">🌿 Dispensaries</span>
+      </div>
+      <div class="place-addr">533 Ocean St, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Adults-only cannabis option</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.69 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge ka">Adults only</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Treehouse Cannabis</div>
+        <span class="cat-pill" style="background:#16a085">🌿 Dispensaries</span>
+      </div>
+      <div class="place-addr">3651 Soquel Dr, Soquel, CA 95073</div>
+      <div class="place-notes">Adults-only cannabis option</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 2 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge ka">Adults only</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">O'Neill Surf Shop</div>
+        <span class="cat-pill" style="background:#e91e63">🛍️ Shops &amp; Areas</span>
+      </div>
+      <div class="place-addr">1115 41st Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Surf apparel, hats, sweatshirts and browsing</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.7 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge kmh">Medium-High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Traveler Surf Club</div>
+        <span class="cat-pill" style="background:#e91e63">🛍️ Shops &amp; Areas</span>
+      </div>
+      <div class="place-addr">747 41st Ave, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Surf-focused adult stop</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.61 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">And Friends</div>
+        <span class="cat-pill" style="background:#e91e63">🛍️ Shops &amp; Areas</span>
+      </div>
+      <div class="place-addr">3627 Portola Dr, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Small shop and art gallery</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.57 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Capitola Village Shops</div>
+        <span class="cat-pill" style="background:#e91e63">🛍️ Shops &amp; Areas</span>
+      </div>
+      <div class="place-addr">Capitola Village, Capitola, CA 95010</div>
+      <div class="place-notes">Boutiques, restaurants, beach browsing</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 1.01 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge kmh">Medium-High</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Pacific Garden Mall</div>
+        <span class="cat-pill" style="background:#e91e63">🛍️ Shops &amp; Areas</span>
+      </div>
+      <div class="place-addr">Pacific Ave, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Downtown shops and restaurants</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.83 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Pleasure Point Surf Break</div>
+        <span class="cat-pill" style="background:#d4ac0d">🏄 Sports &amp; Recreation</span>
+      </div>
+      <div class="place-addr">Pleasure Point, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Best low-effort sports viewing from the house</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 0.43 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Walkable</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">DeLaveaga Golf Course</div>
+        <span class="cat-pill" style="background:#d4ac0d">🏄 Sports &amp; Recreation</span>
+      </div>
+      <div class="place-addr">401 Upper Park Rd, Santa Cruz, CA 95065</div>
+      <div class="place-notes">Adult golf option</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.6 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge ka">Adults only</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Santa Cruz Beach Volleyball</div>
+        <span class="cat-pill" style="background:#d4ac0d">🏄 Sports &amp; Recreation</span>
+      </div>
+      <div class="place-addr">Main Beach, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Beach sports near Boardwalk/Main Beach</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.6 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Twin Lakes Kayaking / Paddleboarding</div>
+        <span class="cat-pill" style="background:#d4ac0d">🏄 Sports &amp; Recreation</span>
+      </div>
+      <div class="place-addr">Santa Cruz Harbor, Santa Cruz, CA 95062</div>
+      <div class="place-notes">Water-sports option near harbor</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 2.28 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div>
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">Monterey Bay Whale Watching</div>
+        <span class="cat-pill" style="background:#d4ac0d">🏄 Sports &amp; Recreation</span>
+      </div>
+      <div class="place-addr">Santa Cruz Harbor / Wharf area, Santa Cruz, CA 95060</div>
+      <div class="place-notes">Adult-friendly boat outing; not ideal for toddlers unless conditions are calm</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 3.65 mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">Short drive</span>
+        <span class="kid-badge km">Medium</span>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       MAP
+  ═══════════════════════════════════════════════ -->
+  <section class="tab-panel" id="tab-map">
+    <p class="section-title">🗺️ Interactive Map</p>
+    <p class="section-sub">All locations mapped from home base at Pleasure Point — click any pin for details</p>
+    <div class="map-legend">
+      <h3>CATEGORIES — click to show/hide</h3>
+      <div class="legend-grid" id="legend-grid"></div>
+    </div>
+    <div id="map"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  🌊 <strong>Santa Cruz MDW 2026</strong> · Memorial Day Weekend · Pleasure Point crew
+</footer>
+
+<script>
+// ─────────────────────────────────────────────
+// DATA
+// ─────────────────────────────────────────────
+const LOCATIONS = [
+  {n:"4720 Portola Drive",cat:"Home Base",sub:"Lodging",lat:36.9674967,lng:-121.9594841,addr:"4720 Portola Dr, Santa Cruz, CA 95062",dist:0,db:"Home",kf:"High",notes:"Primary stay location near Pleasure Point / Capitola waterfront"},
+  {n:"Verve Coffee Roasters",cat:"Coffee & Bakeries",sub:"Coffee Shop",lat:36.9641117,lng:-121.9647546,addr:"816 41st Ave, Santa Cruz, CA 95062",dist:0.69,db:"Walkable",kf:"High",notes:"Coffee, pre-beach fuel, stroller-friendly if not packed"},
+  {n:"Cat & Cloud",cat:"Coffee & Bakeries",sub:"Coffee Shop",lat:36.9636817,lng:-121.9701117,addr:"3600 Portola Dr, Santa Cruz, CA 95062",dist:0.58,db:"Walkable",kf:"High",notes:"Coffee and breakfast walk with stroller"},
+  {n:"Coffeetopia at El Rancho",cat:"Coffee & Bakeries",sub:"Coffee Shop",lat:36.9764796,lng:-121.9849354,addr:"1443 Capitola Rd, Santa Cruz, CA 95062",dist:2.25,db:"Short drive",kf:"High",notes:"Easy parking and nearby errands"},
+  {n:"Cliff Cafe",cat:"Coffee & Bakeries",sub:"Breakfast / Coffee",lat:36.9637883,lng:-121.9650662,addr:"815 41st Ave, Santa Cruz, CA 95062",dist:0.66,db:"Walkable",kf:"Medium",notes:"Neighborhood breakfast, best early"},
+  {n:"Companion Bakeshop",cat:"Coffee & Bakeries",sub:"Bakery",lat:36.9612240,lng:-122.0479324,addr:"2341 Mission St, Santa Cruz, CA 95060",dist:4.8,db:"Short drive",kf:"Medium",notes:"Pastries and bread, drive from Portola"},
+  {n:"Shrine Coffee",cat:"Coffee & Bakeries",sub:"Coffee Shop",lat:36.9566884,lng:-122.0252827,addr:"544 West Cliff Dr, Santa Cruz, CA 95060",dist:3.8,db:"Short drive",kf:"Medium",notes:"Coffee paired with West Cliff ocean walk"},
+  {n:"Gayle's Bakery",cat:"Coffee & Bakeries",sub:"Bakery / Quick Lunch",lat:36.9784346,lng:-121.9524905,addr:"504 Bay Ave, Capitola, CA 95010",dist:1.12,db:"Short drive",kf:"High",notes:"Quick lunch, pastries, sandwiches, picnic supplies"},
+  {n:"Dunlap Donuts",cat:"Coffee & Bakeries",sub:"Donut Shop",lat:36.9631645,lng:-121.9670195,addr:"3800 Portola Dr, Santa Cruz, CA 95062",dist:0.45,db:"Walkable",kf:"High",notes:"Easy toddler breakfast treat near El Rancho area"},
+  {n:"Pleasure Pizza East Side Eatery",cat:"Restaurants & Bars",sub:"Pizza",lat:36.9639391,lng:-121.9647592,addr:"800 41st Ave, Santa Cruz, CA 95062",dist:0.63,db:"Walkable",kf:"High",notes:"Reliable toddler-friendly takeout"},
+  {n:"Zameen at the Point",cat:"Restaurants & Bars",sub:"Mediterranean",lat:36.9642793,lng:-121.9650651,addr:"851 41st Ave, Santa Cruz, CA 95062",dist:0.71,db:"Walkable",kf:"Medium-High",notes:"Fast bowls and wraps"},
+  {n:"Miches and Ceviches",cat:"Restaurants & Bars",sub:"Seafood",lat:36.9623910,lng:-121.9649870,addr:"743 41st Ave, Santa Cruz, CA 95062",dist:0.59,db:"Walkable",kf:"Medium",notes:"Adult-friendly seafood option"},
+  {n:"The Point Kitchen & Bar",cat:"Restaurants & Bars",sub:"Restaurant / Bar",lat:36.9632016,lng:-121.9713669,addr:"3326 Portola Dr, Santa Cruz, CA 95062",dist:0.9,db:"Walkable",kf:"Medium-High",notes:"Coastal-casual brunch/dinner"},
+  {n:"Hula's Island Grill",cat:"Restaurants & Bars",sub:"Tiki Bar",lat:36.9715374,lng:-122.0258045,addr:"221 Cathcart St, Santa Cruz, CA 95060",dist:3.79,db:"Short drive",kf:"Medium-High",notes:"Massive tiki drinks, happy hour 4–6pm, casual adult energy"},
+  {n:"Little Tampico",cat:"Restaurants & Bars",sub:"Mexican",lat:36.9851854,lng:-121.9550832,addr:"2605 S Main St, Soquel, CA 95073",dist:1.92,db:"Short drive",kf:"Medium",notes:"Mexican food and big margaritas"},
+  {n:"Zelda's on the Beach",cat:"Restaurants & Bars",sub:"Beachfront",lat:36.9719589,lng:-121.9518311,addr:"203 Esplanade, Capitola, CA 95010",dist:1.02,db:"Short drive",kf:"Medium-High",notes:"Classic Capitola beachfront meal"},
+  {n:"Shadowbrook",cat:"Restaurants & Bars",sub:"Restaurant",lat:36.9746403,lng:-121.9554418,addr:"1750 Wharf Rd, Capitola, CA 95010",dist:1.19,db:"Short drive",kf:"Medium",notes:"Iconic Capitola dinner, better outside toddler meltdown window"},
+  {n:"Pizza My Heart Capitola",cat:"Restaurants & Bars",sub:"Pizza",lat:36.9719661,lng:-121.9518702,addr:"209 Esplanade, Capitola, CA 95010",dist:1.0,db:"Short drive",kf:"High",notes:"Casual pizza near Capitola Beach"},
+  {n:"East End Gastropub",cat:"Restaurants & Bars",sub:"Gastropub",lat:36.9718222,lng:-121.9650024,addr:"1501 41st Ave, Capitola, CA 95010",dist:1.14,db:"Short drive",kf:"Medium",notes:"Adult-friendly food and drinks near 41st"},
+  {n:"La Posta",cat:"Restaurants & Bars",sub:"Italian",lat:36.9681769,lng:-122.0077431,addr:"538 Seabright Ave, Santa Cruz, CA 95062",dist:3.14,db:"Short drive",kf:"Medium",notes:"Adult-leaning dinner option"},
+  {n:"Mentone",cat:"Restaurants & Bars",sub:"Restaurant",lat:36.9780933,lng:-121.9009987,addr:"174 Aptos Village Way, Aptos, CA 95003",dist:3.2,db:"Short drive",kf:"Medium",notes:"Adult-leaning restaurant in Aptos"},
+  {n:"41st Ave + Portola Hub",cat:"Shops & Areas",sub:"Commercial Hub",lat:36.9635105,lng:-121.9657694,addr:"41st Ave & Portola Dr, Santa Cruz, CA 95062",dist:0.66,db:"Walkable",kf:"High",notes:"Closest commercial zone for coffee, casual food, surf shops, errands"},
+  {n:"Pleasure Point County Park",cat:"Beaches & Parks",sub:"Coastal Park",lat:36.9570,lng:-121.9758,addr:"E Cliff Dr, Santa Cruz, CA 95062",dist:0.44,db:"Walkable",kf:"Medium-High",notes:"Surf watching, ocean views, photos; better for watching than swimming"},
+  {n:"The Hook County Park",cat:"Beaches & Parks",sub:"Beach / Surf Spot",lat:36.9605358,lng:-121.9649913,addr:"511 41st Ave, Santa Cruz, CA 95062",dist:0.24,db:"Walkable",kf:"Medium",notes:"Surf viewing, picnic area, vista point, stairs and rocks near water"},
+  {n:"Moran Lake County Park",cat:"Beaches & Parks",sub:"Park / Beach",lat:36.9570331,lng:-121.9782904,addr:"22775 E Cliff Dr, Santa Cruz, CA 95062",dist:1.35,db:"Short drive",kf:"High",notes:"Toddler-friendly park, lagoon, beach access, restrooms nearby"},
+  {n:"Moran Lake Beach",cat:"Beaches & Parks",sub:"Beach",lat:36.9568,lng:-121.9784,addr:"E Cliff Dr near Moran Lake, Santa Cruz, CA 95062",dist:1.41,db:"Short drive",kf:"High",notes:"Small pocket beach for local sand play"},
+  {n:"East Cliff Drive Pathway",cat:"Beaches & Parks",sub:"Walking Path",lat:36.9643401,lng:-121.9929493,addr:"East Cliff Dr, Santa Cruz, CA 95062",dist:0.75,db:"Walkable",kf:"High",notes:"Stroller-friendly ocean walk and surf watching"},
+  {n:"Twin Lakes State Beach",cat:"Beaches & Parks",sub:"Beach",lat:36.9637,lng:-122.0018,addr:"East Cliff Dr at 7th Ave, Santa Cruz, CA 95062",dist:2.39,db:"Short drive",kf:"High",notes:"Wide sand, picnics, swimming, near harbor"},
+  {n:"Seabright Beach",cat:"Beaches & Parks",sub:"Beach",lat:36.9645,lng:-122.0115,addr:"Seabright Ave & E Cliff Dr, Santa Cruz, CA 95062",dist:2.92,db:"Short drive",kf:"High",notes:"Wide sand and harbor views"},
+  {n:"Capitola Beach",cat:"Beaches & Parks",sub:"Beach",lat:36.9721764,lng:-121.9520474,addr:"Capitola Esplanade, Capitola, CA 95010",dist:0.97,db:"Short drive",kf:"High",notes:"Beach, restaurants, shops, ice cream; parking tough after morning"},
+  {n:"Rio Del Mar Beach",cat:"Beaches & Parks",sub:"Beach",lat:36.9697948,lng:-121.9047953,addr:"Beach Dr, Aptos, CA 95003",dist:3.1,db:"Short drive",kf:"High",notes:"Great wide sandy family beach"},
+  {n:"Natural Bridges State Beach",cat:"Beaches & Parks",sub:"State Beach",lat:36.9508085,lng:-122.0558931,addr:"2531 W Cliff Dr, Santa Cruz, CA 95060",dist:5.47,db:"Short drive",kf:"Medium-High",notes:"Sunset, tide pools, scenery"},
+  {n:"Main Beach",cat:"Beaches & Parks",sub:"Beach",lat:36.9644,lng:-122.0236,addr:"Beach St, Santa Cruz, CA 95060",dist:3.56,db:"Short drive",kf:"Medium-High",notes:"Classic Santa Cruz beach near Boardwalk"},
+  {n:"Lighthouse Field State Beach",cat:"Beaches & Parks",sub:"State Beach",lat:36.9641171,lng:-122.0255619,addr:"West Cliff Dr, Santa Cruz, CA 95060",dist:3.78,db:"Short drive",kf:"Medium",notes:"Scenic West Cliff stop and surf watching"},
+  {n:"Wilder Ranch State Park",cat:"Beaches & Parks",sub:"State Park",lat:36.9603050,lng:-122.0831360,addr:"1401 Coast Rd, Santa Cruz, CA 95060",dist:6.95,db:"Short drive",kf:"Medium",notes:"Day-trip park and coastal trails"},
+  {n:"Santa Cruz Beach Boardwalk",cat:"Attractions",sub:"Amusement Park",lat:36.9643,lng:-122.0204,addr:"400 Beach St, Santa Cruz, CA 95060",dist:3.5,db:"Short drive",kf:"High",notes:"Classic rides, arcade, Main Beach; best before 11am"},
+  {n:"Sky Glider",cat:"Attractions",sub:"Boardwalk Ride",lat:36.9644,lng:-122.0201,addr:"400 Beach St, Santa Cruz, CA 95060",dist:3.49,db:"Short drive",kf:"Medium",notes:"Scenic overhead Boardwalk ride"},
+  {n:"Haunted Castle",cat:"Attractions",sub:"Boardwalk Ride",lat:36.9642,lng:-122.0206,addr:"400 Beach St, Santa Cruz, CA 95060",dist:3.51,db:"Short drive",kf:"Adults / older kids",notes:"Interactive dark ride; likely too dark/loud for toddlers"},
+  {n:"Carousel / Looff Carousel",cat:"Attractions",sub:"Boardwalk Ride",lat:36.9641,lng:-122.0207,addr:"400 Beach St, Santa Cruz, CA 95060",dist:3.53,db:"Short drive",kf:"High",notes:"Most toddler-friendly Boardwalk ride"},
+  {n:"Santa Cruz Wharf",cat:"Attractions",sub:"Wharf",lat:36.9625706,lng:-122.0236480,addr:"21 Municipal Wharf, Santa Cruz, CA 95060",dist:3.66,db:"Short drive",kf:"Medium-High",notes:"Stroller walk, views, snacks"},
+  {n:"Downtown Santa Cruz / Pacific Ave",cat:"Attractions",sub:"Shopping / Dining",lat:36.9761197,lng:-122.0267603,addr:"Pacific Ave, Santa Cruz, CA 95060",dist:3.84,db:"Short drive",kf:"Medium",notes:"Restaurants, shops, nightlife"},
+  {n:"Abbott Square Market",cat:"Attractions",sub:"Food Hall",lat:36.9744119,lng:-122.0251925,addr:"725 Front St, Santa Cruz, CA 95060",dist:3.83,db:"Short drive",kf:"Medium",notes:"Adult-friendly food hall and downtown stop"},
+  {n:"Boardwalk Bowl",cat:"Attractions",sub:"Indoor Recreation",lat:36.9643239,lng:-122.0203960,addr:"115 Cliff St, Santa Cruz, CA 95060",dist:3.61,db:"Short drive",kf:"Medium-High",notes:"Bowling, arcade, restaurant and bar near Boardwalk"},
+  {n:"Roaring Camp Railroad",cat:"Attractions",sub:"Railroad",lat:37.0506068,lng:-122.0672076,addr:"5401 Graham Hill Rd, Felton, CA 95018",dist:8.15,db:"Day trip",kf:"High",notes:"Redwood train ride, strong toddler option"},
+  {n:"Henry Cowell Redwoods",cat:"Attractions",sub:"State Park",lat:37.0440497,lng:-122.0709368,addr:"101 N Big Trees Park Rd, Felton, CA 95018",dist:8.08,db:"Day trip",kf:"High",notes:"Redwood grove and easy nature walk"},
+  {n:"Monterey Bay Aquarium",cat:"Attractions",sub:"Aquarium",lat:36.6180889,lng:-121.9016720,addr:"886 Cannery Row, Monterey, CA 93940",dist:23.74,db:"Day trip",kf:"High",notes:"Bigger day trip if weather turns or adults want a major outing"},
+  {n:"Rio Theatre",cat:"Events & Nightlife",sub:"Theater / Music Venue",lat:36.9800104,lng:-122.0104498,addr:"1205 Soquel Ave, Santa Cruz, CA 95062",dist:3.18,db:"Short drive",kf:"Adults only",notes:"Adult split-shift concert/show option"},
+  {n:"The Catalyst",cat:"Events & Nightlife",sub:"Music Venue",lat:36.9712828,lng:-122.0258837,addr:"1011 Pacific Ave, Santa Cruz, CA 95060",dist:3.79,db:"Short drive",kf:"Adults only",notes:"Adult nightlife/concert option"},
+  {n:"Moe's Alley",cat:"Events & Nightlife",sub:"Music Venue",lat:36.9877622,lng:-121.9828878,addr:"1535 Commercial Way, Santa Cruz, CA 95065",dist:2.57,db:"Short drive",kf:"Adults only",notes:"Adult live-music option"},
+  {n:"Bargetto Winery",cat:"Events & Nightlife",sub:"Winery",lat:36.9880,lng:-121.9610,addr:"3535 N Main St, Soquel, CA 95073",dist:2.04,db:"Short drive",kf:"Adults only",notes:"Sit-down adult option with wine and occasional music"},
+  {n:"New Leaf Community Market",cat:"Groceries & Essentials",sub:"Grocery Store",lat:36.9717209,lng:-121.9650657,addr:"1475 41st Ave, Capitola, CA 95010",dist:1.13,db:"Short drive",kf:"High",notes:"Prepared foods, deli, bakery, wine and beer"},
+  {n:"Whole Foods Market",cat:"Groceries & Essentials",sub:"Grocery Store",lat:36.9742625,lng:-121.9635820,addr:"1710 41st Ave, Capitola, CA 95010",dist:1.29,db:"Short drive",kf:"High",notes:"Organic groceries, toddler snacks, prepared foods"},
+  {n:"Trader Joe's",cat:"Groceries & Essentials",sub:"Grocery Store",lat:36.9768,lng:-121.9655,addr:"3555 Clares St D, Capitola, CA 95010",dist:1.3,db:"Short drive",kf:"High",notes:"Snacks, fruit, frozen meals, wine"},
+  {n:"Safeway",cat:"Groceries & Essentials",sub:"Grocery Store",lat:36.9861004,lng:-121.9632406,addr:"2720 41st Ave, Soquel, CA 95073",dist:1.65,db:"Short drive",kf:"High",notes:"Groceries and practical supplies"},
+  {n:"Target",cat:"Groceries & Essentials",sub:"Retail / Grocery",lat:36.9758583,lng:-121.9663140,addr:"1825 41st Ave, Capitola, CA 95010",dist:1.43,db:"Short drive",kf:"High",notes:"Diapers, wipes, pharmacy-type needs, household basics"},
+  {n:"Pointside Meat Shop",cat:"Groceries & Essentials",sub:"Market / Beer / Wine",lat:36.9657720,lng:-121.9649970,addr:"915 41st Ave, Santa Cruz, CA 95062",dist:0.68,db:"Walkable",kf:"Medium",notes:"Meat, snacks, craft beer, wine"},
+  {n:"El Rancho Shopping Center",cat:"Groceries & Essentials",sub:"Shopping Center",lat:36.9631645,lng:-121.9670195,addr:"38th Ave & Portola Dr, Santa Cruz, CA 95062",dist:0.51,db:"Walkable",kf:"High",notes:"Coffee, donuts, pizza, errands, easy parking"},
+  {n:"Pleasure Point Liquor & Grocery",cat:"Liquor Stores",sub:"Liquor / Convenience",lat:36.9631083,lng:-121.9650974,addr:"4000 Portola Dr, Santa Cruz, CA 95062",dist:0.42,db:"Walkable",kf:"Medium",notes:"Closest drinks, ice, snacks and convenience supplies"},
+  {n:"Pleasure Point Wine & Spirits",cat:"Liquor Stores",sub:"Liquor Store",lat:36.9636729,lng:-121.9696657,addr:"3750 Portola Dr, Santa Cruz, CA 95062",dist:0.54,db:"Walkable",kf:"Medium",notes:"Wine, beer, liquor stop along Portola"},
+  {n:"41st Ave Liquors",cat:"Liquor Stores",sub:"Liquor Store",lat:36.9757426,lng:-121.9650181,addr:"41st Ave, Santa Cruz, CA 95062",dist:0.69,db:"Walkable",kf:"Medium",notes:"Convenient if already on 41st"},
+  {n:"PR Farms",cat:"Dispensaries",sub:"Dispensary",lat:36.9670970,lng:-121.9647960,addr:"1051 41st Ave, Santa Cruz, CA 95062",dist:0.7,db:"Walkable",kf:"Adults only",notes:"Adults-only walkable errand"},
+  {n:"The Hook Outlet",cat:"Dispensaries",sub:"Dispensary",lat:36.9762927,lng:-121.9540570,addr:"Capitola area, Capitola, CA 95010",dist:1.08,db:"Short drive",kf:"Adults only",notes:"Adults-only short drive; confirm hours and ordering requirements"},
+  {n:"KindPeoples",cat:"Dispensaries",sub:"Dispensary",lat:36.9757787,lng:-122.0197579,addr:"533 Ocean St, Santa Cruz, CA 95060",dist:3.69,db:"Short drive",kf:"Adults only",notes:"Adults-only cannabis option"},
+  {n:"Treehouse Cannabis",cat:"Dispensaries",sub:"Dispensary",lat:36.9870610,lng:-121.9673741,addr:"3651 Soquel Dr, Soquel, CA 95073",dist:2.0,db:"Short drive",kf:"Adults only",notes:"Adults-only cannabis option"},
+  {n:"O'Neill Surf Shop",cat:"Shops & Areas",sub:"Surf Shop",lat:36.9686416,lng:-121.9650030,addr:"1115 41st Ave, Santa Cruz, CA 95062",dist:0.7,db:"Walkable",kf:"Medium-High",notes:"Surf apparel, hats, sweatshirts and browsing"},
+  {n:"Traveler Surf Club",cat:"Shops & Areas",sub:"Surf Shop / Rentals",lat:36.9626350,lng:-121.9649870,addr:"747 41st Ave, Santa Cruz, CA 95062",dist:0.61,db:"Walkable",kf:"Medium",notes:"Surf-focused adult stop"},
+  {n:"And Friends",cat:"Shops & Areas",sub:"Shop / Gallery",lat:36.9636802,lng:-121.9700314,addr:"3627 Portola Dr, Santa Cruz, CA 95062",dist:0.57,db:"Walkable",kf:"Medium",notes:"Small shop and art gallery"},
+  {n:"Capitola Village Shops",cat:"Shops & Areas",sub:"Shopping District",lat:36.9726846,lng:-121.9521374,addr:"Capitola Village, Capitola, CA 95010",dist:1.01,db:"Short drive",kf:"Medium-High",notes:"Boutiques, restaurants, beach browsing"},
+  {n:"Pacific Garden Mall",cat:"Shops & Areas",sub:"Shopping District",lat:36.9761197,lng:-122.0267603,addr:"Pacific Ave, Santa Cruz, CA 95060",dist:3.83,db:"Short drive",kf:"Medium",notes:"Downtown shops and restaurants"},
+  {n:"Pleasure Point Surf Break",cat:"Sports & Recreation",sub:"Surf Break",lat:36.9598533,lng:-121.9824010,addr:"Pleasure Point, Santa Cruz, CA 95062",dist:0.43,db:"Walkable",kf:"Medium",notes:"Best low-effort sports viewing from the house"},
+  {n:"DeLaveaga Golf Course",cat:"Sports & Recreation",sub:"Golf Course",lat:36.9975468,lng:-121.9994119,addr:"401 Upper Park Rd, Santa Cruz, CA 95065",dist:3.6,db:"Short drive",kf:"Adults only",notes:"Adult golf option"},
+  {n:"Santa Cruz Beach Volleyball",cat:"Sports & Recreation",sub:"Beach Volleyball",lat:36.9644,lng:-122.0236,addr:"Main Beach, Santa Cruz, CA 95060",dist:3.6,db:"Short drive",kf:"Medium",notes:"Beach sports near Boardwalk/Main Beach"},
+  {n:"Twin Lakes Kayaking / Paddleboarding",cat:"Sports & Recreation",sub:"Kayak / Paddleboard",lat:36.9820655,lng:-121.9927739,addr:"Santa Cruz Harbor, Santa Cruz, CA 95062",dist:2.28,db:"Short drive",kf:"Medium",notes:"Water-sports option near harbor"},
+  {n:"Monterey Bay Whale Watching",cat:"Sports & Recreation",sub:"Boat Tour",lat:36.9627970,lng:-122.0236490,addr:"Santa Cruz Harbor / Wharf area, Santa Cruz, CA 95060",dist:3.65,db:"Short drive",kf:"Medium",notes:"Adult-friendly boat outing; not ideal for toddlers unless conditions are calm"}
+];
+
+// ─────────────────────────────────────────────
+// CATEGORY COLORS
+// ─────────────────────────────────────────────
+const CAT_COLORS = {
+  "Home Base":             "#e74c3c",
+  "Coffee & Bakeries":     "#8B4513",
+  "Restaurants & Bars":    "#e67e22",
+  "Beaches & Parks":       "#2980b9",
+  "Attractions":           "#8e44ad",
+  "Events & Nightlife":    "#c0392b",
+  "Groceries & Essentials":"#27ae60",
+  "Liquor Stores":         "#f39c12",
+  "Dispensaries":          "#16a085",
+  "Shops & Areas":         "#e91e63",
+  "Sports & Recreation":   "#d4ac0d"
+};
+
+const CAT_ICONS = {
+  "Home Base":"🏡","Coffee & Bakeries":"☕","Restaurants & Bars":"🍽️",
+  "Beaches & Parks":"🏖️","Attractions":"🎡","Events & Nightlife":"🎵",
+  "Groceries & Essentials":"🛒","Liquor Stores":"🍷","Dispensaries":"🌿",
+  "Shops & Areas":"🛍️","Sports & Recreation":"🏄"
+};
+
+// ─────────────────────────────────────────────
+// TABS
+// ─────────────────────────────────────────────
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const panel = document.getElementById('tab-' + btn.dataset.tab);
+    panel.classList.add('active');
+    if (btn.dataset.tab === 'map' && !mapInitialized) {
+      requestAnimationFrame(() => { initMap(); requestAnimationFrame(() => leafletMap.invalidateSize()); });
+    }
+  });
+});
+
+// ─────────────────────────────────────────────
+// PLACES OF INTEREST
+// ─────────────────────────────────────────────
+function kidClass(kf) {
+  if (!kf || kf === 'Adults only') return 'ka';
+  if (kf === 'High') return 'kh';
+  if (kf === 'Medium-High') return 'kmh';
+  return 'km';
+}
+
+function renderPlaces(cat) {
+  const grid = document.getElementById('places-grid');
+  const items = cat === 'all' ? LOCATIONS : LOCATIONS.filter(l => l.cat === cat);
+  document.getElementById('place-count').textContent = items.length;
+  const color = (c) => CAT_COLORS[c] || '#888';
+  grid.innerHTML = items.map(loc => `
+    <div class="place-card">
+      <div class="place-top">
+        <div class="place-name">${loc.n}</div>
+        <span class="cat-pill" style="background:${color(loc.cat)}">${CAT_ICONS[loc.cat]||''} ${loc.cat}</span>
+      </div>
+      <div class="place-addr">${loc.addr}</div>
+      <div class="place-notes">${loc.notes}</div>
+      <div class="place-footer">
+        <span class="dist-pill">📍 ${loc.dist} mi</span>
+        <span class="dist-pill" style="background:#fef3e2;color:#92400e;">${loc.db}</span>
+        <span class="kid-badge ${kidClass(loc.kf)}">${loc.kf}</span>
+      </div>
+    </div>`).join('');
+}
+
+renderPlaces('all');
+
+document.getElementById('place-filters').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPlaces(btn.dataset.cat);
+});
+
+// ─────────────────────────────────────────────
+// MAP
+// ─────────────────────────────────────────────
+let mapInitialized = false;
+let leafletMap;
+const markerLayers = {};
+const hiddenCats = new Set();
+
+function createMarkerIcon(cat, isHome) {
+  const color = CAT_COLORS[cat] || '#888';
+  const icon = isHome ? '⭐' : (CAT_ICONS[cat] || '📍');
+  return L.divIcon({
+    className: '',
+    html: `<div style="background:${color};width:${isHome?36:28}px;height:${isHome?36:28}px;border-radius:50%;border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;font-size:${isHome?16:12}px;">${icon}</div>`,
+    iconSize: [isHome?36:28, isHome?36:28],
+    iconAnchor: [isHome?18:14, isHome?18:14],
+    popupAnchor: [0, isHome?-20:-16]
+  });
+}
+
+function initMap() {
+  mapInitialized = true;
+  leafletMap = L.map('map', { center: [36.9675, -121.9595], zoom: 13 });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19
+  }).addTo(leafletMap);
+  LOCATIONS.forEach(loc => {
+    if (!markerLayers[loc.cat]) markerLayers[loc.cat] = [];
+    const isHome = loc.cat === 'Home Base';
+    const marker = L.marker([loc.lat, loc.lng], { icon: createMarkerIcon(loc.cat, isHome) });
+    marker.bindPopup(`<strong>${loc.n}</strong><br><small style="color:#555">${loc.addr}</small><br><small style="color:#777">${loc.sub} · ${loc.dist} mi · ${loc.db}</small><br><small style="color:#444;line-height:1.5">${loc.notes}</small>`);
+    marker.addTo(leafletMap);
+    markerLayers[loc.cat].push(marker);
+  });
+  const legend = document.getElementById('legend-grid');
+  Object.entries(CAT_COLORS).forEach(([cat, color]) => {
+    if (cat === 'Home Base') return;
+    const el = document.createElement('div');
+    el.className = 'legend-item';
+    el.dataset.cat = cat;
+    el.innerHTML = `<div class="legend-dot" style="background:${color}"></div><span>${CAT_ICONS[cat]||''} ${cat}</span>`;
+    el.addEventListener('click', () => {
+      if (hiddenCats.has(cat)) {
+        hiddenCats.delete(cat); el.classList.remove('hidden');
+        (markerLayers[cat] || []).forEach(m => m.addTo(leafletMap));
+      } else {
+        hiddenCats.add(cat); el.classList.add('hidden');
+        (markerLayers[cat] || []).forEach(m => leafletMap.removeLayer(m));
+      }
+    });
+    legend.appendChild(el);
+  });
+}
+// ─────────────────────────────────────────────
+</script>
+
+
+</body></html>
